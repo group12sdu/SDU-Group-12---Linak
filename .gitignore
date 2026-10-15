@@ -69,4 +69,4 @@ Testing/
 .cache/
 
 # data in database
-database/data/
+database/data/*
