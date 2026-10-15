@@ -1,0 +1,14 @@
+services:
+  database:
+    image: postgres:16-alpine
+    container_name: unidesk-db
+    restart: always
+    environment:
+      POSTGRES_DB: unidesk
+      POSTGRES_USER: group12
+      POSTGRES_PASSWORD: thecakegroup
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
