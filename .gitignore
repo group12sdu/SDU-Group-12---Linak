@@ -69,4 +69,8 @@ Testing/
 .cache/
 
 # data in database
-database/data/*
+database/data/
+
+.DS_Store
+**/.DS_Store
+database/data/
