@@ -73,4 +73,6 @@ database/data/
 
 .DS_Store
 **/.DS_Store
+database/data/.DS_Store
+**/.DS_Store
 database/data/
