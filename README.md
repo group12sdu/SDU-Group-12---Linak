@@ -1,2 +1,2 @@
-# SDU-Group-12---Linak
-Boo
+# uniDesk
+- Group 12 Semester Project
