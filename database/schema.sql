@@ -21,7 +21,6 @@ pretty_picture_cm int
 CREATE TABLE desks (
 desk_id SERIAL PRIMARY KEY,     
 room_id int REFERENCES rooms(room_id) ON DELETE SET NULL,   
-desk_name varchar(255),
 pairing_code int,
 user_token varchar(32)
 );
