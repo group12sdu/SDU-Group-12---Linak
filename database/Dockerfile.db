@@ -1,0 +1,5 @@
+FROM postgres:16-alpine 
+ENV POSTGRES_DB=unidesk 
+ENV POSTGRES_USER=group12 
+ENV POSTGRES_PASSWORD=thecakegroup 
+COPY schema.sql /docker-entrypoint-initdb.d/init.sql

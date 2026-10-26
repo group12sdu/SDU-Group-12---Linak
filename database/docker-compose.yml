@@ -1,5 +1,10 @@
+
+
 services:
   database:
+    build:
+      context: .
+      dockerfile: Dockerfile.db
     image: postgres:16-alpine
     container_name: unidesk-db
     restart: always
@@ -12,3 +17,5 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
       - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
+
+      
