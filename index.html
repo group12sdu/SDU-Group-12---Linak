@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desk Manager</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <header id="app-header">
+      <h1>Desk Manager</h1>
+      <nav aria-label="Main navigation">
+        <a href="#login-view">Log in</a>
+        <a href="#my-desk-view">My desk</a>
+        <a href="#admin-desks-view">Manage desks</a>
+        <a href="#admin-employees-view">Manage employees</a>
+        <a href="#admin-cleaning-view">Cleaning</a>
+      </nav>
+      <div id="user-box">
+        <span>Demo view</span><a href="#login-view">Log out</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="login-view" class="view">
+        <h2>Log in</h2>
+        <form action="#my-desk-view">
+          <label for="login-username">Username</label>
+          <input
+            type="text"
+            id="login-username"
+            name="username"
+            autocomplete="username"
+            placeholder="Enter username"
+          />
+          <label for="login-password">Password</label>
+          <input
+            type="password"
+            id="login-password"
+            name="password"
+            autocomplete="current-password"
+            placeholder="Enter password"
+          />
+          <button type="submit" class="primary">Log in</button>
+        </form>
+      </section>
+
+      <section id="my-desk-view" class="view">
+        <article>
+          <h2>My height presets</h2>
+          <div class="card-row">
+            <div class="preset-card">
+              <h3>Standing</h3>
+              <p class="preset-value">112 cm</p>
+              <p>Daniel Falat</p>
+              <button type="button">Use standing height</button>
+            </div>
+            <div class="preset-card">
+              <h3>Sitting</h3>
+              <p class="preset-value">74 cm</p>
+              <p>Daniel Falat</p>
+              <button type="button">Use sitting height</button>
+            </div>
+          </div>
+        </article>
+        <article>
+          <h2>Desks</h2>
+          <p>Pick a desk and move it to one of your presets.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Desk ID</th>
+                  <th>Building</th>
+                  <th>Floor</th>
+                  <th>Room</th>
+                  <th>Desk</th>
+                  <th>Height</th>
+                  <th>Move to</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>B1-F1-R101-D1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>101</td>
+                  <td>1</td>
+                  <td>72 cm</td>
+                  <td>
+                    <button type="button">Standing</button>
+                    <button type="button">Sitting</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>B1-F1-R101-D2</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>101</td>
+                  <td>2</td>
+                  <td>72 cm</td>
+                  <td>
+                    <button type="button">Standing</button>
+                    <button type="button">Sitting</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>B1-F1-R101-D3</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>101</td>
+                  <td>3</td>
+                  <td>72 cm</td>
+                  <td>
+                    <button type="button">Standing</button>
+                    <button type="button">Sitting</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>B1-F1-R101-D4</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>101</td>
+                  <td>4</td>
+                  <td>72 cm</td>
+                  <td>
+                    <button type="button">Standing</button>
+                    <button type="button">Sitting</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>B1-F1-R101-D5</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>101</td>
+                  <td>5</td>
+                  <td>72 cm</td>
+                  <td>
+                    <button type="button">Standing</button>
+                    <button type="button">Sitting</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>B1-F1-R101-D6</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>101</td>
+                  <td>6</td>
+                  <td>72 cm</td>
+                  <td>
+                    <button type="button">Standing</button>
+                    <button type="button">Sitting</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="admin-desks-view" class="view">
+        <article>
+          <h2>Add a desk</h2>
+          <form class="inline-form" action="#admin-desks-view">
+            <label for="desk-building">Building</label
+            ><input type="number" id="desk-building" min="1" value="1" />
+            <label for="desk-floor">Floor</label
+            ><input type="number" id="desk-floor" min="0" value="1" />
+            <label for="desk-room">Room</label
+            ><input type="number" id="desk-room" min="1" value="101" />
+            <label for="desk-number">Desk in room</label
+            ><input type="number" id="desk-number" min="1" value="1" />
+            <button type="submit" class="primary">Add desk</button>
+          </form>
+        </article>
+        <article>
+          <h2>All desks</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Desk ID</th>
+                  <th>Building</th>
+                  <th>Floor</th>
+                  <th>Room</th>
+                  <th>Desk</th>
+                  <th>Height</th>
+                  <th>Set height</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>B1-F1-R101-D1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>101</td>
+                  <td>1</td>
+                  <td>72 cm</td>
+                  <td>
+                    <input
+                      type="number"
+                      value="72"
+                      min="65"
+                      max="125"
+                      aria-label="Set desk height"
+                    />
+                  </td>
+                  <td><button type="button" class="danger">Remove</button></td>
+                </tr>
+                <tr>
+                  <td>B1-F1-R101-D2</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>101</td>
+                  <td>2</td>
+                  <td>72 cm</td>
+                  <td>
+                    <input
+                      type="number"
+                      value="72"
+                      min="65"
+                      max="125"
+                      aria-label="Set desk height"
+                    />
+                  </td>
+                  <td><button type="button" class="danger">Remove</button></td>
+                </tr>
+                <tr>
+                  <td>B1-F1-R102-D1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>102</td>
+                  <td>1</td>
+                  <td>72 cm</td>
+                  <td>
+                    <input
+                      type="number"
+                      value="72"
+                      min="65"
+                      max="125"
+                      aria-label="Set desk height"
+                    />
+                  </td>
+                  <td><button type="button" class="danger">Remove</button></td>
+                </tr>
+                <tr>
+                  <td>B1-F2-R201-D1</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>201</td>
+                  <td>1</td>
+                  <td>72 cm</td>
+                  <td>
+                    <input
+                      type="number"
+                      value="72"
+                      min="65"
+                      max="125"
+                      aria-label="Set desk height"
+                    />
+                  </td>
+                  <td><button type="button" class="danger">Remove</button></td>
+                </tr>
+                <tr>
+                  <td>B1-F2-R201-D2</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>201</td>
+                  <td>2</td>
+                  <td>72 cm</td>
+                  <td>
+                    <input
+                      type="number"
+                      value="72"
+                      min="65"
+                      max="125"
+                      aria-label="Set desk height"
+                    />
+                  </td>
+                  <td><button type="button" class="danger">Remove</button></td>
+                </tr>
+                <tr>
+                  <td>B2-F1-R101-D1</td>
+                  <td>2</td>
+                  <td>1</td>
+                  <td>101</td>
+                  <td>1</td>
+                  <td>72 cm</td>
+                  <td>
+                    <input
+                      type="number"
+                      value="72"
+                      min="65"
+                      max="125"
+                      aria-label="Set desk height"
+                    />
+                  </td>
+                  <td><button type="button" class="danger">Remove</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="admin-employees-view" class="view">
+        <article>
+          <h2>Add an employee</h2>
+          <form action="#admin-employees-view">
+            <label for="employee-name">Name</label
+            ><input
+              type="text"
+              id="employee-name"
+              placeholder="Employee name"
+            />
+            <label for="employee-username">Username</label
+            ><input type="text" id="employee-username" placeholder="Username" />
+            <label for="employee-password">Password</label
+            ><input
+              type="password"
+              id="employee-password"
+              autocomplete="new-password"
+              placeholder="Password"
+            />
+            <label for="employee-role">Role</label
+            ><select id="employee-role">
+              <option>Employee</option>
+              <option>Admin</option>
+            </select>
+            <label for="employee-standing">Standing height (cm, optional)</label
+            ><input
+              type="number"
+              id="employee-standing"
+              min="65"
+              max="125"
+              step="1"
+            />
+            <label for="employee-sitting">Sitting height (cm, optional)</label
+            ><input
+              type="number"
+              id="employee-sitting"
+              min="65"
+              max="125"
+              step="1"
+            />
+            <div class="actions">
+              <button type="submit" class="primary">Add employee</button
+              ><button type="reset">Cancel editing</button>
+            </div>
+          </form>
+        </article>
+        <article>
+          <h2>All employees</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Username</th>
+                  <th>Role</th>
+                  <th>Standing</th>
+                  <th>Sitting</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Admin</td>
+                  <td>admin</td>
+                  <td>Admin</td>
+                  <td>110 cm</td>
+                  <td>72 cm</td>
+                  <td>
+                    <button type="button">Edit</button>
+                    <button type="button" class="danger">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Daniel Falat</td>
+                  <td>daniel</td>
+                  <td>Employee</td>
+                  <td>112 cm</td>
+                  <td>74 cm</td>
+                  <td>
+                    <button type="button">Edit</button>
+                    <button type="button" class="danger">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Dominik Bezo</td>
+                  <td>dominik</td>
+                  <td>Employee</td>
+                  <td>118 cm</td>
+                  <td>78 cm</td>
+                  <td>
+                    <button type="button">Edit</button>
+                    <button type="button" class="danger">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="admin-cleaning-view" class="view">
+        <article>
+          <h2>Cleaning preset</h2>
+          <p>
+            At the chosen time every desk rises to the cleaning height, so the
+            cleaning staff can reach the floor.
+          </p>
+          <form action="#admin-cleaning-view">
+            <div class="check-row">
+              <input type="checkbox" id="cleaning-enabled" /><label
+                for="cleaning-enabled"
+                >Start cleaning mode automatically every day</label
+              >
+            </div>
+            <label for="cleaning-time">Cleaning staff begins at</label
+            ><input type="time" id="cleaning-time" value="18:00" />
+            <div class="check-row">
+              <input type="checkbox" id="cleaning-use-max" checked /><label
+                for="cleaning-use-max"
+                >Raise each desk to its maximum height</label
+              >
+            </div>
+            <label for="cleaning-height">Or a fixed cleaning height (cm)</label
+            ><input
+              type="number"
+              id="cleaning-height"
+              min="65"
+              max="125"
+              value="125"
+            />
+            <button type="submit" class="primary">Save preset</button>
+          </form>
+        </article>
+        <article>
+          <h2>Cleaning mode</h2>
+          <p>Status: Inactive</p>
+          <div class="actions">
+            <button type="button" class="primary">
+              Start cleaning mode now</button
+            ><button type="button">End cleaning mode (restore heights)</button>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer>Desk Manager demo</footer>
+  </body>
+</html>
