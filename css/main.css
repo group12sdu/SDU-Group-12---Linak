@@ -259,3 +259,235 @@ nav a:hover,
 body:has(.view:target) #login-view:not(:target) {
   display: none;
 }
+header h1 {
+    font-weight : 800;
+    letter-spacing: -1px;
+}
+.brand-dot {
+    color : #b8ef9b;
+}
+/* Dashboard header, with a welcome message and user name(needs further implementation) */
+.dashboard-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 8px 0 28px;
+}
+
+    .dashboard-heading h2 {
+        margin: 0 0 8px;
+        font-size: clamp(1.7rem, 4vw, 2.3rem);
+        color: #14283f;
+    }
+
+    .dashboard-heading p {
+        margin: 0;
+    }
+
+    .dashboard-heading .eyebrow {
+        margin-bottom: 10px;
+        color: #52705a;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+    }
+
+.system-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 14px;
+    border: 1px solid #dce9dc;
+    border-radius: 999px;
+    background: #f0f8ef;
+    color: #285b37;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #68a96b;
+}
+
+@media (max-width: 600px) {
+    .dashboard-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+/* Desk preset cards */
+.card-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin: 20px 0 28px;
+}
+
+.preset-card {
+    position: relative;
+    padding: 24px;
+    border: 1px solid #e0e7ef;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 16px rgba(22, 42, 66, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .preset-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 24px rgba(22, 42, 66, 0.09);
+    }
+
+    .preset-card h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        color: #14283f;
+        font-size: 1.15rem;
+    }
+
+.preset-value {
+    margin: 16px 0;
+    color: #14283f;
+    font-size: 2.3rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.preset-card p {
+    color: #69788a;
+    line-height: 1.6;
+}
+
+@media (max-width: 650px) {
+    .card-row {
+        grid-template-columns: 1fr;
+    }
+}
+/* Desk management tables */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e0e7ef;
+    border-radius: 12px;
+}
+
+thead {
+    background: #f0f4f8;
+}
+
+th {
+    padding: 15px 18px;
+    color: #526276;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #e0e7ef;
+}
+
+td {
+    padding: 15px 18px;
+    color: #344256;
+    border-bottom: 1px solid #edf1f5;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: #f7fafc;
+}
+
+/* Keep tables usable on narrow screens */
+@media (max-width: 700px) {
+    table {
+        font-size: 0.85rem;
+    }
+
+    th,
+    td {
+        padding: 11px 9px;
+    }
+}
+/* Login feedback message */
+#login-message:not([hidden]) {
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    border: 1px solid #f0caca;
+    border-radius: 8px;
+    background: #fff1f1;
+    color: #a12626;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+/* Desk height control buttons */
+.desk-standing,
+.desk-sitting {
+    padding: 9px 14px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Standing button */
+.desk-standing {
+    background-color: #e0f2e6;
+    color: #23663c;
+    border-color: #c4e4cf;
+}
+
+/* Sitting button */
+.desk-sitting {
+    background-color: #e5edf8;
+    color: #28558a;
+    border-color: #cbdcf1;
+}
+
+/* Hover effects */
+.desk-standing:hover {
+    background-color: #c9e8d3;
+    transform: translateY(-1px);
+}
+
+.desk-sitting:hover {
+    background-color: #d1e1f5;
+    transform: translateY(-1px);
+}
+
+/* Keyboard focus */
+.desk-standing:focus-visible,
+.desk-sitting:focus-visible {
+    outline: 3px solid #7aa7df;
+    outline-offset: 2px;
+}
+/* Desk mode indicator */
+.desk-mode {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    background-color: #e5edf8;
+    color: #28558a;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+    .desk-mode.is-standing {
+        background-color: #e0f2e6;
+        color: #23663c;
+    }
