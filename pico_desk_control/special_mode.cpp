@@ -1,0 +1,1 @@
+//special mode class

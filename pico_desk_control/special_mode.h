@@ -1,0 +1,1 @@
+//headder file for special mode class
