@@ -36,11 +36,11 @@ pico_sdk_init()
 # Add executable. Default name is the project name, version 0.1
 
 add_executable(pico_desk_control pico_desk_control.cpp 
-    ./hardware/adjust_height.cpp 
+    ./hardware/adjust_height.cpp
     ./management/code_generator.cpp ./management/desk.cpp 
-    ./isr/height_switch_isr.cpp ./hardware/message_display.cpp 
-    ./isr/preset_override_isr.cpp ./management/preset.cpp 
-    ./isr/special_mode_isr.cpp 
+    ./actions/height_switch.cpp ./hardware/message_display.cpp 
+    ./actions/preset_override.cpp ./management/preset.cpp 
+    ./actions/special_mode.cpp 
     ./management/special_mode.cpp)
 
 pico_set_program_name(pico_desk_control "pico_desk_control")
