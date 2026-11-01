@@ -34,14 +34,12 @@ int main()
     std::cout << desk.preset_.get_sitting_height() << desk.preset_.get_standing_height() << '\n';
     std::cout << desk.is_at_standing_height_ << desk.is_in_normal_mode_ << '\n';
     std::cout << desk.cleaning_.get_height() << desk.cleaning_.get_name() << '\n';
-    std::cout << desk.presentation_.get_height() << desk.presentation_.get_name() << '\n';
-    */
+    std::cout << desk.presentation_.get_height() << desk.presentation_.get_name() << '\n';*/
     while(true){
         /*
         //uncomment to see that it works through serial bus
         std::cout << pending_press << ' ' << doublepress << '\n';
-        */
-        sleep_ms(2000);
+        sleep_ms(2000);*/
     }
 }
 
