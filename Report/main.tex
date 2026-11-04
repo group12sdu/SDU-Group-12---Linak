@@ -1,0 +1,198 @@
+% -----------------------------------------------------------------------------
+% Centre for Industrial Software - SDU
+% Semester Project 3 - 2026 Report Template
+% -----------------------------------------------------------------------------
+
+\documentclass[12pt, a4paper, openany]{report}
+
+% -----------------------------------------------------------------------------
+% PACKAGES
+% -----------------------------------------------------------------------------
+\usepackage{microtype}                                        % Aesthetic typography spacing
+\usepackage{cmbright}                                         % Clean sans-serif font
+\usepackage[utf8]{inputenc}                                   % UTF-8 support
+\usepackage[T1]{fontenc}                                      % Font encoding
+\usepackage[colorlinks=true, allcolors=black]{hyperref}       % Hyperlinks
+\usepackage{fancyhdr}                                         % Headers and footers
+\usepackage{amsmath,amssymb}                                  % Math packages
+\usepackage{graphicx}                                         % Graphics
+\usepackage{booktabs}                                         % Professional tables
+\usepackage[english]{babel}                                   % Language
+\usepackage[a4paper,
+            top=35mm,
+            bottom=30mm,
+            left=35mm,
+            right=25mm]{geometry}                             % Page margins
+\usepackage{csquotes}                                         % Context-sensitive quotation
+\usepackage{lipsum}                                           % Lorem ipsum generator
+\usepackage{xcolor}                                           % Color support
+\usepackage{caption}                                          % Captions
+\usepackage{cite}                                             % IEEE style citation handling
+\usepackage{listings}                                         % Source code listings
+\usepackage{titlesec}                                         % Title formatting
+\usepackage{float}                                            % Floating environments
+\usepackage{enumitem}                                         % Customizable lists
+\usepackage{parskip}                                          % Space between paragraphs instead of indent
+\usepackage{tikz}                                             % TikZ diagrams and placeholder graphics
+
+% -----------------------------------------------------------------------------
+% USER VARIABLES & DEFINITIONS
+% -----------------------------------------------------------------------------
+\newcommand{\theInstitute}{Centre for Industrial Software}
+\newcommand{\theSemester}{Semester Project 3 -- 2026}
+\newcommand{\theTitle}{uniDesk}
+\newcommand{\theSubtitle}{Group 12 -- LINAK Desk Usage Supervision}
+\newcommand{\theSupervisor}{[Supervisor Name]}
+\newcommand{\theGroup}{Group 12}
+
+\definecolor{mygrey}{RGB}{64,64,64}
+\definecolor{sdublue}{RGB}{0,51,102}
+
+% Header and Footer configuration
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{\theTitle}}
+\fancyhead[R]{\small\textit{\nouppercase{\leftmark}}}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{16pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Plain page style (used for chapter opening pages)
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[L]{\small\textit{\theTitle}}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+}
+
+% -----------------------------------------------------------------------------
+% DOCUMENT
+% -----------------------------------------------------------------------------
+\begin{document}
+
+% -----------------------------------------------------------------------------
+% PAGE 1: TITLE PAGE / COVER
+% -----------------------------------------------------------------------------
+\begin{titlepage}
+\pagestyle{empty}
+
+\noindent
+{\textbf{sdu.dk} \hfill \textbf{\#sdudk}}\\[0.5cm]
+\noindent
+{\large \textsc{\theInstitute}}\\[0.2cm]
+\noindent
+{\large \theSemester}
+
+\vspace{3.5cm}
+
+\begin{center}
+\hrule\vspace{0.8cm}
+{\huge \textbf{\textcolor{mygrey}{\theTitle}}}\\[0.4cm]
+{\Large \textit{\theSubtitle}}
+\vspace{0.8cm}\hrule
+\end{center}
+
+\vspace{2.2cm}
+
+\begin{center}
+{\large \textbf{Project Participants:}}\\[0.4cm]
+\begin{tabular}{ll}
+Filip Cunderlik & ficun25@student.sdu.dk \\
+Dominik Bezo & dobez25@student.sdu.dk \\
+Daniel Falat & dafal25@student.sdu.dk \\
+Pavel Seliavko & pasel25@student.sdu.dk \\
+Zoe Elea Schiwy & zosch25@student.sdu.dk \\
+David Nicolae Petrescu & davpe25@student.sdu.dk \\
+\end{tabular}
+
+\vspace{1.2cm}
+
+{\large \textbf{Supervisor:}}\\[0.2cm]
+{\large \theSupervisor}
+
+\vfill
+{\small \today}
+\end{center}
+
+\end{titlepage}
+
+% -----------------------------------------------------------------------------
+% FRONT MATTER
+% -----------------------------------------------------------------------------
+\pagenumbering{roman}
+\setcounter{page}{2}
+
+% PAGE 2: GROUP MEMBER CONTRIBUTIONS & DEVICE HISTORY
+\input{Chapters/ContributionsAndHistory}
+\newpage
+
+% PAGE 3: ABSTRACT
+\input{Chapters/Abstract}
+\newpage
+
+% PAGE 4: DECLARATION OF GENAI USAGE
+\input{Chapters/DeclarationOfGenAI}
+\newpage
+
+% PAGE 5: TABLE OF CONTENTS
+\tableofcontents
+\newpage
+
+% PAGE 6: LIST OF TABLES
+\listoftables
+\newpage
+
+% PAGE 7: LIST OF FIGURES
+\listoffigures
+\newpage
+
+% -----------------------------------------------------------------------------
+% MAIN CONTENT CHAPTERS
+% -----------------------------------------------------------------------------
+\pagenumbering{arabic}
+\setcounter{page}{8}
+
+% CHAPTER 1: INTRODUCTION
+\input{Chapters/Introduction}
+
+% CHAPTER 2: METHODOLOGY
+\input{Chapters/Methodology}
+
+% CHAPTER 3: PROBLEM ANALYSIS
+\input{Chapters/ProblemAnalysis}
+
+% CHAPTER 4: REQUIREMENTS
+\input{Chapters/Requirements}
+
+% CHAPTER 5: DESIGN
+\input{Chapters/Design}
+
+% CHAPTER 6: IMPLEMENTATION
+\input{Chapters/Implementation}
+
+% CHAPTER 7: VALIDATION
+\input{Chapters/Validation}
+
+% CHAPTER 8: CONCLUSION
+\input{Chapters/Conclusion}
+
+% -----------------------------------------------------------------------------
+% REFERENCES (IEEE Style)
+% -----------------------------------------------------------------------------
+\clearpage
+\phantomsection
+\nocite{*} % Shows the IEEE references
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{IEEEtran}
+\bibliography{References}
+
+% -----------------------------------------------------------------------------
+% APPENDIX
+% -----------------------------------------------------------------------------
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Appendix A}
+\input{Chapters/Appendix}
+
+\end{document}

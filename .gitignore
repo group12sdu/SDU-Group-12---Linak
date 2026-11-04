@@ -23,7 +23,6 @@
 *.dll
 *.so.*
 
-
 # Fortran module files
 *.mod
 *.smod
@@ -54,7 +53,6 @@ compile_commands.json
 
 # Temporary files
 *.tmp
-*.log
 *.bak
 *.swp
 
@@ -67,3 +65,68 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# -------------------------------------------------------------
+# Operating System files
+# -------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*Zone.Identifier*
+
+# -------------------------------------------------------------
+# IDE and Editor files
+# -------------------------------------------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# -------------------------------------------------------------
+# Database & Docker local data
+# -------------------------------------------------------------
+database/data/
+data/
+*.rdb
+*.sqlite3
+
+# -------------------------------------------------------------
+# Python / Node local environments
+# -------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+.venv/
+node_modules/
+
+# -------------------------------------------------------------
+# LaTeX build artifacts (keep .tex, .bib, and .pdf if committed)
+# -------------------------------------------------------------
+Report/*.aux
+Report/*.bbl
+Report/*.blg
+Report/*.lof
+Report/*.lot
+Report/*.out
+Report/*.toc
+Report/*.log
+Report/*.acn
+Report/*.acr
+Report/*.alg
+Report/*.glg
+Report/*.glo
+Report/*.gls
+Report/*.ist
+Report/*.nlo
+Report/*.synctex.gz
+Report/*.fdb_latexmk
+Report/*.fls
+Report/*.nav
+Report/*.snm
+Report/*.vrb
