@@ -11,8 +11,8 @@ namespace management{
             std::string code_;
             
             std::random_device rd_;
-            std::uniform_int_distribution<> distribution_;
-            std::mt19937 generator_;
+            std::uniform_int_distribution<> distribution_ = std::uniform_int_distribution<int>(0, 9);
+            std::mt19937 generator_ = std::mt19937(rd_());
 
         public:
             Code_generator();

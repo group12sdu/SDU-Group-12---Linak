@@ -7,13 +7,9 @@
 
 #include "code_generator.h"
 management::Code_generator::Code_generator()
-    : code_{"000000"}, rd_{}
+    : code_{"000000"}
 {
-    std::uniform_int_distribution<int> distribution(0, 9);
-    distribution_ = distribution;
-    std::mt19937 generator(rd_());
-    generator_ = generator;
-    //constructors
+    //constructor
 }
 
 management::Code_generator::~Code_generator() = default; // destructor
