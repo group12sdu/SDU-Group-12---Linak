@@ -1,0 +1,31 @@
+﻿/* Login */
+const loginForm = document.getElementById("login-form");
+const loginMessage = document.getElementById("login-message");
+const logoutLink = document.getElementById("logout-link");
+
+loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const username = document
+        .getElementById("login-username")
+        .value.trim();
+
+    const password = document
+        .getElementById("login-password")
+        .value;
+
+    if (!username || !password) {
+        loginMessage.textContent =
+            "Please enter both your username and password.";
+        loginMessage.hidden = false;
+        return;
+    }
+
+    loginMessage.hidden = true;
+    window.location.hash = "my-desk-view";
+});
+
+logoutLink.addEventListener("click", function () {
+    loginForm.reset();
+    loginMessage.hidden = true;
+});

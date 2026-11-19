@@ -58,6 +58,31 @@
 
                   </div>
               </div>
+              <section class="summary-grid" aria-label="Desk summary">
+                  <article class="summary-card">
+                      <p class="summary-label">Connected desks</p>
+                      <strong id="connected-desk-count" class="summary-value">6</strong>
+                      <span class="summary-detail">All registered desks</span>
+                  </article>
+
+                  <article class="summary-card">
+                      <p class="summary-label">Online desks</p>
+                      <strong id="online-desk-count" class="summary-value summary-success">6</strong>
+                      <span class="summary-detail">Connection is active</span>
+                  </article>
+
+                  <article class="summary-card">
+                      <p class="summary-label">Moving desks</p>
+                      <strong class="summary-value summary-warning">0</strong>
+                      <span class="summary-detail">No desks moving</span>
+                  </article>
+
+                  <article class="summary-card">
+                      <p class="summary-label">Active errors</p>
+                      <strong class="summary-value summary-danger">0</strong>
+                      <span class="summary-detail">No current errors</span>
+                  </article>
+              </section>
               <article>
                   <h2>My height presets</h2>
                   <div class="card-row">
@@ -112,8 +137,8 @@
                                   <td>101</td>
                                   <td>1</td>
                                   <td>
-                                    <span class="desk-height">72 cm</span>
-                                    <span class="desk-mode">Sitting</span>
+                                      <span class="desk-height">72 cm</span>
+                                      <span class="desk-mode">Sitting</span>
                                   </td>
                                   <td>
                                       <button type="button" class="desk-standing">Standing</button>
@@ -127,8 +152,8 @@
                                   <td>101</td>
                                   <td>2</td>
                                   <td>
-                                    <span class="desk-height">72 cm</span>
-                                    <span class="desk-mode">Sitting</span>
+                                      <span class="desk-height">72 cm</span>
+                                      <span class="desk-mode">Sitting</span>
                                   </td>
                                   <td>
                                       <button type="button" class="desk-standing">Standing</button>
@@ -204,7 +229,7 @@
           <section id="admin-desks-view" class="view">
               <article>
                   <h2>Add a desk</h2>
-                  <form class="inline-form" action="#admin-desks-view">
+                  <form id="add-desk-form" class="inline-form" action="#admin-desks-view">
                       <label for="desk-building">Building</label><input type="number" id="desk-building" min="1" value="1" />
                       <label for="desk-floor">Floor</label><input type="number" id="desk-floor" min="0" value="1" />
                       <label for="desk-room">Room</label><input type="number" id="desk-room" min="1" value="101" />
@@ -228,7 +253,7 @@
                                   <th>Remove</th>
                               </tr>
                           </thead>
-                          <tbody>
+                          <tbody id="admin-desks-body">
                               <tr>
                                   <td>B1-F1-R101-D1</td>
                                   <td>1</td>
@@ -334,7 +359,7 @@
           <section id="admin-employees-view" class="view">
               <article>
                   <h2>Add an employee</h2>
-                  <form action="#admin-employees-view">
+                  <form id="add-employee-form" action="#admin-employees-view">
                       <label for="employee-name">Name</label><input type="text"
                                                                     id="employee-name"
                                                                     placeholder="Employee name" />
@@ -379,7 +404,7 @@
                                   <th>Actions</th>
                               </tr>
                           </thead>
-                          <tbody>
+                          <tbody id="employees-body">
                               <tr>
                                   <td>1</td>
                                   <td>Admin</td>
@@ -429,7 +454,7 @@
                       At the chosen time every desk rises to the cleaning height, so the
                       cleaning staff can reach the floor.
                   </p>
-                  <form action="#admin-cleaning-view">
+                  <form id="cleaning-settings-form" action="#admin-cleaning-view">
                       <div class="check-row">
                           <input type="checkbox" id="cleaning-enabled" /><label for="cleaning-enabled">Start cleaning mode automatically every day</label>
                       </div>
@@ -447,16 +472,23 @@
               </article>
               <article>
                   <h2>Cleaning mode</h2>
-                  <p>Status: Inactive</p>
+                  <p id="cleaning-status">Status: Inactive</p>
                   <div class="actions">
-                      <button type="button" class="primary">
+                      <button type="button"
+                              id="start-cleaning-button"
+                              class="primary">
                           Start cleaning mode now
-                      </button><button type="button">End cleaning mode (restore heights)</button>
+                      </button>
+
+                      <button type="button"
+                              id="end-cleaning-button">
+                          End cleaning mode (restore heights)
+                      </button>
                   </div>
               </article>
           </section>
       </main>
       <footer>Desk Manager demo</footer>
-      <script src="js/login.js"></script>
+      <script type="module" src="js/app.js"></script>
   </body>
 </html>
