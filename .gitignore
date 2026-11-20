@@ -68,13 +68,22 @@ vcpkg_installed/
 Testing/
 .cache/
 
-# data in database
+# helping data files in database that are unnecessary
 database/data/
 database/middleman_data
 
+# another files that get created with report
 .DS_Store
 **/.DS_Store
 database/data/.DS_Store
 **/.DS_Store
 database/data/
 Report/main.aux
+Report/main.bbl
+Report/main.blg
+Report/main.fdb_latexmk
+Report/main.fls
+Report/main.lof
+Report/main.lot
+Report/main.toc
+.vscode/settings.json
