@@ -70,9 +70,11 @@ Testing/
 
 # data in database
 database/data/
+database/middleman_data
 
 .DS_Store
 **/.DS_Store
 database/data/.DS_Store
 **/.DS_Store
 database/data/
+Report/main.aux

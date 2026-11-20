@@ -22,7 +22,7 @@ CREATE TABLE desks (
 desk_id SERIAL PRIMARY KEY,     
 room_id int REFERENCES rooms(room_id) ON DELETE SET NULL,   
 pairing_code int,
-user_token varchar(32)
+desk_token varchar(32) UNIQUE
 );
 
 CREATE TABLE user_presets (

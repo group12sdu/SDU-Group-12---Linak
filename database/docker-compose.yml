@@ -17,5 +17,19 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
       - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
+  
+  middleman-db:
+    image: postgres:16-alpine
+    container_name: unidesk-middleman-db
+    restart: always
+    environment:
+      POSTGRES_DB: middleman
+      POSTGRES_USER: middleman_user
+      POSTGRES_PASSWORD: middleman_secret
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./middleman_data:/var/lib/postgresql/data
+      - ./middleman_schema.sql:/docker-entrypoint-initdb.d/init.sql
 
       
