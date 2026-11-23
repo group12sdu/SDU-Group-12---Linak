@@ -38,7 +38,9 @@ pico_sdk_init()
 add_executable(HerdingModeRemote HerdingModeRemote.cpp 
                 ./Software/HerdingMode.cpp
                 ./Hardware/button.cpp
-                ./Hardware/buzzer.cpp)
+                ./Hardware/buzzer.cpp
+                ./Hardware/i2c_bus.cpp
+                ./Hardware/display.cpp)
 
 pico_set_program_name(HerdingModeRemote "HerdingModeRemote")
 pico_set_program_version(HerdingModeRemote "0.1")
@@ -59,6 +61,7 @@ target_include_directories(HerdingModeRemote PRIVATE
 # Add any user requested libraries
 target_link_libraries(HerdingModeRemote 
         hardware_adc
+        hardware_i2c
         )
 
 pico_add_extra_outputs(HerdingModeRemote)

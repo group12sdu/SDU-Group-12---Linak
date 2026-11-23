@@ -3,6 +3,8 @@
 
 #include <cstdint>
 #include "pico/stdlib.h"
+#include "hardware/i2c.h"
+#include "i2c_bus.h"
 
 namespace hardware_constants{
     
@@ -11,6 +13,9 @@ namespace hardware_constants{
     constexpr uint BUZZER_PIN{20};
     constexpr uint POT_PIN{26};
 
+    constexpr std::uint32_t SDA_PIN {4};
+    constexpr std::uint32_t SCL_PIN {5};
+    constexpr std::uint32_t I2C_BAUDRATE {400000};
 }
 
 #endif

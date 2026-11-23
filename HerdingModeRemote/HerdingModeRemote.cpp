@@ -4,18 +4,28 @@
 
 #include "./hardware/buzzer.h"
 #include "./hardware/button.h"
+#include "./hardware/display.h"
+namespace hw = hardware;
 
 int main()
 {
     stdio_init_all();
-    hardware::Buzzer();
-    hardware::Button();
+    hw::Buzzer{};
+    hw::Button{};
+    hw::Display{};
+    hw::Display::clear();
+    if (hw::Display::show()){std::cout << "clean screen\n";}
+
     while (true) {
+        hw::Display::draw_text(0, 0, "Good!");
         sleep_ms(1000);
-        std::cout << "good\n"; 
-        hardware::Buzzer::Good();
+        if (hw::Display::show()){std::cout << "good\n";}
+        hw::Display::clear();
+        hw::Buzzer::Good();
+        hw::Display::draw_text(97, 7, ")Bad!");
         sleep_ms(1000);
-        std::cout << "bad\n";
-        hardware::Buzzer::Bad();
+        if (hw::Display::show()){std::cout << "bad\n";}
+        hw::Display::clear();
+        hw::Buzzer::Bad();
     }
 }
