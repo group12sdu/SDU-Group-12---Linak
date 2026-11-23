@@ -1,0 +1,158 @@
+﻿const loginForm = document.getElementById("login-form");
+const loginMessage = document.getElementById("login-message");
+const logoutLink = document.getElementById("logout-link");
+
+// Handle login form submission
+loginForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const username = document
+        .getElementById("login-username")
+        .value.trim();
+
+    const password = document
+        .getElementById("login-password")
+        .value;
+
+    if (!username || !password) {
+        loginMessage.textContent =
+            "Please enter both your username and password.";
+        loginMessage.hidden = false;
+        return;
+    }
+
+    loginMessage.hidden = true;
+    window.location.hash = "my-desk-view";
+});
+
+// Handle logout
+logoutLink.addEventListener("click", function () {
+    loginForm.reset();
+    loginMessage.hidden = true;
+});
+
+// Find the desk preset elements
+const standingPreset = document.getElementById("standing-preset");
+const sittingPreset = document.getElementById("sitting-preset");
+const currentDeskHeight = document.getElementById("current-desk-height");
+const deskStatusMessage = document.getElementById("desk-status-message");
+
+// Handle standing preset
+standingPreset.addEventListener("click", function () {
+    currentDeskHeight.textContent = "112 cm";
+    deskStatusMessage.textContent =
+        "Standing preset selected. Hardware control is not connected.";
+});
+
+// Handle sitting preset
+sittingPreset.addEventListener("click", function () {
+    currentDeskHeight.textContent = "74 cm";
+    deskStatusMessage.textContent =
+        "Sitting preset selected. Hardware control is not connected.";
+});
+document.querySelectorAll("#my-desk-view tbody tr").forEach(function (row) {
+    const heightCell = row.querySelector(".desk-height");
+    const modeLabel = row.querySelector(".desk-mode");
+    const standingButton = row.querySelector(".desk-standing");
+    const sittingButton = row.querySelector(".desk-sitting");
+
+    standingButton.addEventListener("click", function () {
+        heightCell.textContent = "112 cm";
+        modeLabel.textContent = "Standing";
+        modeLabel.classList.add("is-standing");
+    });
+
+    sittingButton.addEventListener("click", function () {
+        heightCell.textContent = "74 cm";
+        modeLabel.textContent = "Sitting";
+        modeLabel.classList.remove("is-standing");
+    });
+});
+// Add a new desk to the admin desk table
+const addDeskForm = document.getElementById("add-desk-form");
+const adminDesksBody = document.getElementById("admin-desks-body");
+
+addDeskForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const building = document.getElementById("desk-building").value;
+    const floor = document.getElementById("desk-floor").value;
+    const room = document.getElementById("desk-room").value;
+    const deskNumber = document.getElementById("desk-number").value;
+
+    const deskId = `B${building}-F${floor}-R${room}-D${deskNumber}`;
+
+    const row = document.createElement("tr");
+
+    const deskIdCell = document.createElement("td");
+    deskIdCell.textContent = deskId;
+
+    const buildingCell = document.createElement("td");
+    buildingCell.textContent = building;
+
+    const floorCell = document.createElement("td");
+    floorCell.textContent = floor;
+
+    const roomCell = document.createElement("td");
+    roomCell.textContent = room;
+
+    const deskNumberCell = document.createElement("td");
+    deskNumberCell.textContent = deskNumber;
+
+    const heightCell = document.createElement("td");
+    heightCell.textContent = "72 cm";
+
+    const setHeightCell = document.createElement("td");
+    const heightInput = document.createElement("input");
+
+    heightInput.type = "number";
+    heightInput.value = "72";
+    heightInput.min = "65";
+    heightInput.max = "125";
+    heightInput.setAttribute("aria-label", `Set height for ${deskId}`);
+
+    setHeightCell.appendChild(heightInput);
+
+    const removeCell = document.createElement("td");
+    const removeButton = document.createElement("button");
+
+    removeButton.type = "button";
+    removeButton.className = "danger";
+    removeButton.textContent = "Remove";
+    removeButton.addEventListener("click", removeDesk);
+
+    removeCell.appendChild(removeButton);
+
+    row.appendChild(deskIdCell);
+    row.appendChild(buildingCell);
+    row.appendChild(floorCell);
+    row.appendChild(roomCell);
+    row.appendChild(deskNumberCell);
+    row.appendChild(heightCell);
+    row.appendChild(setHeightCell);
+    row.appendChild(removeCell);
+
+    adminDesksBody.appendChild(row);
+
+    addDeskForm.reset();
+});
+function removeDesk(event) {
+    const button = event.currentTarget;
+    const row = button.closest("tr");
+    const deskId = row.cells[0].textContent;
+
+    const confirmed = window.confirm(
+        `Are you sure you want to remove desk ${deskId}?`
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    row.remove();
+}
+document
+    .querySelectorAll("#admin-desks-body button.danger")
+    .forEach(function (button) {
+        button.addEventListener("click", removeDesk);
+    });

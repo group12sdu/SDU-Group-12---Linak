@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.github",
     "\\css",
     "\\js"
   ],
+  "SelectedNode": "\\js\\desks.js",
   "PreviewInSolutionExplorer": false
 }
