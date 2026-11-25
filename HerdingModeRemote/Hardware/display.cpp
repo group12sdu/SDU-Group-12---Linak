@@ -1,13 +1,14 @@
-#include "display.h"
-
 #include <algorithm>
 #include <array>
 #include <cstddef>
 #include <cstdint>
 #include <string>
+#include <iostream>
 
+#include "display.h"
 #include "font.h"
 #include "i2c_bus.h"
+namespace hw = hardware;
 #include "hardware_constants.h"
 namespace hwc = hardware_constants;
 
@@ -71,31 +72,40 @@ namespace
     constexpr std::size_t PIXEL_BYTES {hardware::Display::WIDTH * hardware::Display::PAGES};
     std::array<std::uint8_t, 1 + PIXEL_BYTES> buffer_{};
     
-    hardware::I2cBus bus_{i2c0, hwc::SDA_PIN, hwc::SCL_PIN, hwc::I2C_BAUDRATE};
+    hw::I2cBus bus_{i2c0, hwc::SDA_PIN, hwc::SCL_PIN, hwc::I2C_BAUDRATE};
+
+    volatile bool initialized{false};
 }
 
-hardware::Display::Display()
+hw::Display::Display()
 {
-    buffer_[0] = PIXELS_FOLLOW;
-    for (const std::uint8_t command : INIT_COMMANDS)
-    {
-        send_command(command);
+    if (!initialized){
+        buffer_[0] = PIXELS_FOLLOW;
+        for (const std::uint8_t command : INIT_COMMANDS)
+        {
+            send_command(command);
+        }
+        initialized = !initialized;
     }
 }
 
-bool hardware::Display::send_command(std::uint8_t command)
+bool hw::Display::send_command(std::uint8_t command)
 {
     const std::array<std::uint8_t, COMMAND_BYTES> bytes {COMMAND_FOLLOWS, command};
     return bus_.write(ADDRESS, bytes.data(), bytes.size());
 }
 
-void hardware::Display::clear()
+void hw::Display::clear()
 {
+    if (!initialized){
+        std::cout << "display clear called not initialized\n";
+        return;
+    }
     // keep byte 0, PIXELS_FOLLOW
     std::fill(buffer_.begin() + 1, buffer_.end(), 0);
 }
 
-void hardware::Display::draw_char(std::uint32_t column, std::uint32_t page, char character)
+void hw::Display::draw_char(std::uint32_t column, std::uint32_t page, char character)
 {
     if (character < font::FIRST_CHAR || character > font::LAST_CHAR)
     {
@@ -109,8 +119,12 @@ void hardware::Display::draw_char(std::uint32_t column, std::uint32_t page, char
     }
 }
 
-void hardware::Display::draw_text(std::uint32_t column, std::uint32_t page, const std::string& text)
+void hw::Display::draw_text(std::uint32_t column, std::uint32_t page, const std::string& text)
 {
+    if (!initialized){
+        std::cout << "display draw_text called not initialized\n";
+        return;
+    }
     if (page >= PAGES)
     {
         return;
@@ -122,8 +136,20 @@ void hardware::Display::draw_text(std::uint32_t column, std::uint32_t page, cons
     }
 }
 
-bool hardware::Display::show()
+void hw::Display::highlight_section(std::uint32_t column_from, std::uint32_t column_to, std::uint32_t page){
+    std::uint32_t start = page*128 + column_from;
+    std::uint32_t end = start + column_to;
+    for (std::size_t i{1+start}; i < end; ++i){
+        buffer_[i] = ~buffer_[i];
+    }
+}
+
+bool hw::Display::show()
 {
+    if (!initialized){
+        std::cout << "display show called not initialized\n";
+        return false;
+    }
     // the whole screen: columns 0 .. WIDTH - 1, pages 0 .. PAGES - 1
     const bool range_set {send_command(COLUMN_RANGE) && send_command(0) &&
                           send_command(WIDTH - 1) && send_command(PAGE_RANGE) &&

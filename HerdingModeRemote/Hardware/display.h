@@ -1,8 +1,6 @@
 #ifndef SSD1306_H
 #define SSD1306_H
 
-#include <array>
-#include <cstddef>
 #include <cstdint>
 #include <string>
 
@@ -18,12 +16,12 @@ namespace hardware
         static constexpr std::uint32_t PAGE_HEIGHT {8};   // a page is 8 rows: one line of text
         static constexpr std::uint32_t PAGES {8};         // 8 pages of 8 rows: 64 rows
 
-        explicit Display();
+        Display();
 
         static void clear();  // all pixels off
         static void draw_text(std::uint32_t column, std::uint32_t page, const std::string& text);
         static bool show();   // true if the screen got it all
-
+        static void highlight_section(std::uint32_t column_from, std::uint32_t column_to, std::uint32_t page);
     private:
         static bool send_command(std::uint8_t command);
         static void draw_char(std::uint32_t column, std::uint32_t page, char character);

@@ -2,30 +2,17 @@
 #include "pico/stdlib.h"
 #include <iostream>
 
-#include "./hardware/buzzer.h"
-#include "./hardware/button.h"
-#include "./hardware/display.h"
-namespace hw = hardware;
+#include "./Software/Menu.h"
+namespace sw = software;
 
 int main()
 {
     stdio_init_all();
-    hw::Buzzer{};
-    hw::Button{};
-    hw::Display{};
-    hw::Display::clear();
-    if (hw::Display::show()){std::cout << "clean screen\n";}
-
+    sw::Menu menu{};
+    std::string options[8]{"Option 1", "Option 2", "Option 3", "Option 4", "Option 5", "Option 6", "Option 7", "Option 8"};
+    menu.SetOptions(options);
     while (true) {
-        hw::Display::draw_text(0, 0, "Good!");
+        menu.ShowOptions();
         sleep_ms(1000);
-        if (hw::Display::show()){std::cout << "good\n";}
-        hw::Display::clear();
-        hw::Buzzer::Good();
-        hw::Display::draw_text(97, 7, ")Bad!");
-        sleep_ms(1000);
-        if (hw::Display::show()){std::cout << "bad\n";}
-        hw::Display::clear();
-        hw::Buzzer::Bad();
     }
 }

@@ -37,8 +37,11 @@ pico_sdk_init()
 
 add_executable(HerdingModeRemote HerdingModeRemote.cpp 
                 ./Software/HerdingMode.cpp
+                ./Software/Menu.cpp
+                ./Software/Option.cpp
                 ./Hardware/button.cpp
                 ./Hardware/buzzer.cpp
+                ./Hardware/potentiometer.cpp
                 ./Hardware/i2c_bus.cpp
                 ./Hardware/display.cpp)
 

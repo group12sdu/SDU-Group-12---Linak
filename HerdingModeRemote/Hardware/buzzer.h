@@ -1,7 +1,6 @@
 #ifndef BUZZER_H
 #define BUZZE_H
 
-#include "hardware/gpio.h"
 #include <cstdint>
 
 namespace hardware{
