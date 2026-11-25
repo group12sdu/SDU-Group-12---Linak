@@ -138,7 +138,7 @@ void hw::Display::draw_text(std::uint32_t column, std::uint32_t page, const std:
 
 void hw::Display::highlight_section(std::uint32_t column_from, std::uint32_t column_to, std::uint32_t page){
     std::uint32_t start = page*128 + column_from;
-    std::uint32_t end = start + column_to;
+    std::uint32_t end = page*128 + column_to;
     for (std::size_t i{1+start}; i < end; ++i){
         buffer_[i] = ~buffer_[i];
     }

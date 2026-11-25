@@ -14,7 +14,6 @@ namespace hardware_constants{
 
     //potentiometer stuff
     constexpr uint POT_ADC_INPUT {0};
-    constexpr float ADC_MAX {4095.0f};
 
     //display stuff
     constexpr std::uint32_t SDA_PIN {4};

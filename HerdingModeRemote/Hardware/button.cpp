@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "button.h"
+#include "display.h"
 namespace hw = hardware;
 #include "hardware_constants.h"
 namespace hwc = hardware_constants;
@@ -17,6 +18,8 @@ void button_isr(uint gpio, std::uint32_t events){
     }
     // do stuff
     std::cout << "button pressed";
+    hw::Display::clear();
+    hw::Display::show();
     return;
 }   
 
